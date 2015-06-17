@@ -32,7 +32,6 @@ private Logger logger = LoggerFactory.getLogger(getClass());
 	                    System.out.println("线程名称："+Thread.currentThread().getName());  
 	                    response.setContentType("text/plain;charset=utf-8");  
 	                    response.getWriter().write("CallableController");  
-	                    logger.info("进入 异步的方法");
 	                    response.getWriter().close();  
 	                } catch (IOException e) {  
 	                    e.printStackTrace();  
