@@ -6,6 +6,8 @@ import java.util.concurrent.Callable;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -18,7 +20,7 @@ import org.springframework.web.context.request.async.WebAsyncTask;
 @RequestMapping("/async/callable")
 public class CallableController {
 
-
+private Logger logger = LoggerFactory.getLogger(getClass());
 	@RequestMapping("/response-body")
 	public @ResponseBody Callable<String> processUpload(HttpServletRequest request,  
             final HttpServletResponse response)  {
@@ -30,6 +32,7 @@ public class CallableController {
 	                    System.out.println("线程名称："+Thread.currentThread().getName());  
 	                    response.setContentType("text/plain;charset=utf-8");  
 	                    response.getWriter().write("CallableController");  
+	                    logger.info("进入 异步的方法");
 	                    response.getWriter().close();  
 	                } catch (IOException e) {  
 	                    e.printStackTrace();  
